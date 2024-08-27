@@ -1,3 +1,4 @@
+import warnings
 import streamlit as st
 import pandas as pd 
 from matplotlib import pyplot as plt
@@ -9,6 +10,8 @@ st.set_page_config(
     page_title="Dashboard",
     page_icon="📶",
 )
+
+warnings.filterwarnings('ignore', category=DeprecationWarning)
 
 # Dictionary mapping stock tickers to their respective logo image paths
 stocks = {

@@ -1,8 +1,10 @@
+import warnings
 import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 from PIL import Image
 
+warnings.filterwarnings('ignore', category=DeprecationWarning)
 
 st.set_page_config(page_title="Contct Me", page_icon=":📩:", layout="wide")
 

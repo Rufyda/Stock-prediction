@@ -1,3 +1,4 @@
+import warnings
 import streamlit as st
 import yfinance as yf
 import pandas as pd
@@ -7,6 +8,8 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.pipeline import make_pipeline
 import matplotlib.pyplot as plt
+
+warnings.filterwarnings('ignore', category=DeprecationWarning)
 
 # Set the configuration for the Streamlit app page.
 st.set_page_config(
