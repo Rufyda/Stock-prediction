@@ -5,14 +5,12 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 from plotly import express as px
 
-st.set_page_config(layout="wide")
 
 # Set the configuration for the Streamlit app page
 st.set_page_config(
     page_title="Dashboard",
-    page_icon="📶",
+    page_icon="📶",layout="wide"
 )
-st.set_page_config(layout="wide")
 
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
