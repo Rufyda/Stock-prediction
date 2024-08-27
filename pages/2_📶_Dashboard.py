@@ -8,11 +8,13 @@ from plotly import express as px
 # Set the configuration for the Streamlit app page
 st.set_page_config(
     page_title="Dashboard",
-    page_icon="📶", layout="wide"
+    page_icon="📶", 
+    layout="wide"
 )
 
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
+# Load custom CSS
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -31,10 +33,13 @@ stocks = {
 
 # Responsive container for logos
 with st.container():
-    cols = st.columns([1]*len(stocks))
-    for i, stock in enumerate(stocks):
+    # Use a row of columns for logos; ensure they appear horizontally even on small screens
+    col1, col2, col3, col4, col5, col6 = st.columns(6)
+    cols = [col1, col2, col3, col4, col5, col6]
+    
+    for i, (stock, logo) in enumerate(stocks.items()):
         with cols[i]:
-            st.image(stocks[stock], use_column_width=True)  # Use dynamic sizing
+            st.image(logo, use_column_width=True)  # Dynamically resize the image to fit the column
             st.markdown(f"<div style='text-align:center;'>{stock}</div>", unsafe_allow_html=True)
 
 # Load stock data from a CSV file
