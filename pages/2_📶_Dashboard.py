@@ -12,6 +12,7 @@ st.set_page_config(
     page_title="Dashboard",
     page_icon="📶",
 )
+st.set_page_config(layout="wide")
 
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
