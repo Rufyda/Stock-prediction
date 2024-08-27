@@ -14,35 +14,37 @@ st.set_page_config(
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
 # Dictionary mapping stock tickers to their respective logo image paths
-stocks = {
-    'NVDA': 'pages/images/nvda_logo.png',
-    'TSLA': 'pages/images/tesla_logo.png',
-    'AAPL': 'pages/images/aapl_logo.png',
-    'MSFT': 'pages/images/microsoft_logo.png',
-    'GC=F': 'pages/images/gold_logo.png',
-    'SPY': 'pages/images/spy_logo.png'
-}
+with st.container():
 
-# Create a column for each stock and display the logo and name
-cols = st.columns(len(stocks))
-for i, stock in enumerate(stocks):
-    with cols[i]:
-        st.image(stocks[stock], width=60)
-
-# Display stock ticker names
-stock_names = ['NVDA', 'TSLA', 'AAPL', 'MSFT', 'GC=F', 'SPY']
-st.markdown("""
-<div style="font-family: monospace;">
-    <span style="display:inline-block; width: 115px;"> NVDA</span>
-    <span style="display:inline-block; width: 115px;">TSLA</span>
-    <span style="display:inline-block; width: 115px;">AAPL</span>
-    <span style="display:inline-block; width: 115px;">MSFT</span>
-    <span style="display:inline-block; width: 100px;">GC=F</span>
-    <span style="display:inline-block; width: 100px;">SPY</span>
-</div>
-""", unsafe_allow_html=True)
-
-st.write("##")
+    stocks = {
+        'NVDA': 'pages/images/nvda_logo.png',
+        'TSLA': 'pages/images/tesla_logo.png',
+        'AAPL': 'pages/images/aapl_logo.png',
+        'MSFT': 'pages/images/microsoft_logo.png',
+        'GC=F': 'pages/images/gold_logo.png',
+        'SPY': 'pages/images/spy_logo.png'
+    }
+    
+    # Create a column for each stock and display the logo and name
+    cols = st.columns(len(stocks))
+    for i, stock in enumerate(stocks):
+        with cols[i]:
+            st.image(stocks[stock], width=60)
+    
+    # Display stock ticker names
+    stock_names = ['NVDA', 'TSLA', 'AAPL', 'MSFT', 'GC=F', 'SPY']
+    st.markdown("""
+    <div style="font-family: monospace;">
+        <span style="display:inline-block; width: 115px;"> NVDA</span>
+        <span style="display:inline-block; width: 115px;">TSLA</span>
+        <span style="display:inline-block; width: 115px;">AAPL</span>
+        <span style="display:inline-block; width: 115px;">MSFT</span>
+        <span style="display:inline-block; width: 100px;">GC=F</span>
+        <span style="display:inline-block; width: 100px;">SPY</span>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.write("##")
 
 # Load stock data from a CSV file
 data_file_path = 'pages/data/merged_stock_data.csv'
