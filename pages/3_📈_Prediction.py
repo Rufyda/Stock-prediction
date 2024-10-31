@@ -101,21 +101,24 @@ if st.button("Get Data and Predict"):
 
             predicted_dates = pd.date_range(start=stock_data['Date'].max() + pd.Timedelta(days=1), periods=pred_period)
 
-            plt.figure(figsize=(12, 6))
-            plt.plot(stock_data['Date'], stock_data['Adj Close'], label="Historical Prices")
-            plt.plot(stock_data['Date'][:train_size], best_model.predict(X_train), label=f"{best_model_name} Predictions on Training Data")
-            plt.plot(stock_data['Date'][train_size:], best_model.predict(X_test), label=f"{best_model_name} Predictions on Test Data")
-            plt.plot(predicted_dates, future_predictions, label="Future Predictions", linestyle='--')
-            plt.xlabel("Date")
-            plt.ylabel("Price")
-            plt.title(f"Predicted Prices for {ticker}")
-            plt.legend()
-            plt.grid(True)
+            if len(predicted_dates) != len(future_predictions):
+                st.error("Error: Mismatched lengths for predicted dates and predictions.")
+            else:
+                plt.figure(figsize=(12, 6))
+                plt.plot(stock_data['Date'], stock_data['Adj Close'], label="Historical Prices")
+                plt.plot(stock_data['Date'][:train_size], best_model.predict(X_train), label=f"{best_model_name} Predictions on Training Data")
+                plt.plot(stock_data['Date'][train_size:], best_model.predict(X_test), label=f"{best_model_name} Predictions on Test Data")
+                plt.plot(predicted_dates, future_predictions, label="Future Predictions", linestyle='--')
+                plt.xlabel("Date")
+                plt.ylabel("Price")
+                plt.title(f"Predicted Prices for {ticker}")
+                plt.legend()
+                plt.grid(True)
 
-            st.pyplot(plt)
+                st.pyplot(plt)
 
-            predicted_df = pd.DataFrame({"Date": predicted_dates, "Predicted Price": future_predictions})
-            st.write(predicted_df)
+                predicted_df = pd.DataFrame({"Date": predicted_dates, "Predicted Price": future_predictions})
+                st.write(predicted_df)
         else:
             st.error("No data found for the selected ticker and date range.")
     else:
