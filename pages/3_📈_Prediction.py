@@ -16,7 +16,7 @@ st.set_page_config(
     page_icon="📈",
 )
 
-st.title("Stock Price Prediction ")
+st.title("Stock Price Prediction")
 
 ticker = st.text_input("Enter the stock ticker (e.g., AAPL, MSFT):", "AAPL")
 start_date = st.date_input("Start Date", value=pd.to_datetime("2010-01-01"))
