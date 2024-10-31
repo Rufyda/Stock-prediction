@@ -98,6 +98,7 @@ if st.button("Get Data and Predict"):
                                                future_high_low_range])
 
             future_predictions = best_model.predict(future_features)
+            future_predictions = future_predictions.flatten()  # Ensure it's 1D
 
             predicted_dates = pd.date_range(start=stock_data['Date'].max() + pd.Timedelta(days=1), periods=pred_period)
 
