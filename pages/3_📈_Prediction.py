@@ -101,6 +101,11 @@ if st.button("Get Data and Predict"):
 
             predicted_dates = pd.date_range(start=stock_data['Date'].max() + pd.Timedelta(days=1), periods=pred_period)
 
+            # Check dimensions before creating the DataFrame
+            st.write(f"Length of predicted_dates: {len(predicted_dates)}")
+            st.write(f"Length of future_predictions: {len(future_predictions)}")
+            st.write(f"Shape of future_predictions: {future_predictions.shape}")
+
             if len(predicted_dates) != len(future_predictions):
                 st.error("Error: Mismatched lengths for predicted dates and predictions.")
             else:
