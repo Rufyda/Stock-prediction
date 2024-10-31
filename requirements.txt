@@ -6,6 +6,6 @@ scikit_learn
 seaborn
 streamlit_lottie
 yfinance
-pandas==1.5.3
-plotly==5.9.0
-streamlit==1.11.1
+pandas
+plotly
+streamlit
